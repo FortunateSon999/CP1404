@@ -10,9 +10,9 @@ from random import randint
 def main():
     """Takes score and prints grade."""
     score = float(input("Enter score: "))
-    print(get_grade(score))
+    print("The grade for the score is", get_grade(score))
     random_score = randint(1, 100)
-    print(get_grade(random_score))
+    print("The grade for the random score is", get_grade(random_score))
 
 
 def get_grade(score):

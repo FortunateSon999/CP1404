@@ -3,6 +3,7 @@ CP1404 - Prac_02
 Theodore Lee
 """
 
+
 MENU = "(G)et a valid score\n(P)rint result\n(S)how stars\n(Q)uit"
 
 
@@ -15,7 +16,8 @@ def main():
         if user_choice == "G":
             score = get_valid_score()
         elif user_choice == "P":
-            display_grade(score)
+            grade = get_grade(score)
+            print(grade)
         elif user_choice == "S":
             print("*" * score)
         else:
@@ -34,17 +36,17 @@ def get_valid_score():
     return score
 
 
-def display_grade(score):
-    """Takes a score and displays the grade."""
+def get_grade(score):
+    """Takes a score and returns the grade."""
     if score < 0:
-        print("Invalid score")
+        return "Invalid score"
     else:
         if score < 50:
-            print("Bad")
+            return "Bad"
         elif score < 90:
-            print("Passable")
+            return "Passable"
         else:
-            print("Excellent")
+            return "Excellent"
 
 
 main()
