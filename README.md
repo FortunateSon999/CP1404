@@ -1,0 +1,4 @@
+# CP1404
+Course repository
+
+THIS IS THE LEGITIMATE PROJECT
