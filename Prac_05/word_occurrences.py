@@ -1,8 +1,8 @@
 """
 CP1404/CP5632 Practical
 word_occurrences.py
-Estimate: 15minutes
-Actual:
+Estimate: 15 minutes
+Actual: 24 minutes
 """
 def count_word_occurrences(text):
     words_dictionary = {}
