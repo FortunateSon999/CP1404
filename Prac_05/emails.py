@@ -1,8 +1,6 @@
 """
 CP1404/CP5632 Practical
 emails.py
-"""
-"""
 Word Occurrences
 Estimate: 30 minutes
 Actual:   40 minutes
