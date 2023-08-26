@@ -1,5 +1,5 @@
 """
-CP1404 Practical 06 - Guitar
+CP1404 Practical 06 - guitar.py
 Theodore Lee
 """
 

@@ -1,5 +1,5 @@
 """
-CP1404 Practical 06 - Guitar test
+CP1404 Practical 06 - guitar_test.py
 Theodore Lee
 """
 
