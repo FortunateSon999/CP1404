@@ -52,10 +52,13 @@ def get_projects():
     """Loads projects from file, and stores them in a list."""
     projects = []
     with open(FILENAME, 'r') as in_file:
+        in_file.readline()
+
         for line in in_file:
             data = line.strip().split("\t")
             project = Project(data[0], data[1], data[2], data[3], data[4])
             projects.append(project)
+
         for project in projects:
             print(project)
     # Returns a list of objects
@@ -67,18 +70,18 @@ def display_projects(projects):
     incomplete_projects = []
     for project in projects:
         # Checking if project is completed
-        if project[-1] == 100:
+        if int(project.completion_percentage) == 100:
             complete_projects.append(project)
-            sorted_complete_projects = sorted(complete_projects)
         else:
             incomplete_projects.append(project)
-            sorted_incomplete_projects = sorted(incomplete_projects)
+        sorted_complete_projects = sorted(complete_projects)
+        sorted_incomplete_projects = sorted(incomplete_projects)
     print("Incomplete projects:")
     for project in sorted_incomplete_projects:
-        print(f"{project.name}, start: {project.start_date}, priority {project.priority}, estimate: ${project.cost_estimate}, completion: {project.completion_percentage}%")
-    print("Complete projects:")
+        print(f"\t{project.name}, start: {project.start_date}, priority {project.priority}, estimate: ${float(project.cost_estimate):.2f}, completion: {project.completion_percentage}%")
+    print("Completed projects:")
     for project in sorted_complete_projects:
-        print(f"{project.name}, start: {project.start_date}, priority {project.priority}, estimate: ${project.cost_estimate}, completion: {project.completion_percentage}%")
+        print(f"\t{project.name}, start: {project.start_date}, priority {project.priority}, estimate: ${project.cost_estimate}, completion: {project.completion_percentage}%")
 
 
 if __name__ == "__main__":
