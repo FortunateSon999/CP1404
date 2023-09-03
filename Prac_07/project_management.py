@@ -34,10 +34,8 @@ def main():
             print("save projects")
         elif choice == "D":
             print("display projects")
-            with open(FILENAME, 'r') as in_file:
-                for project in in_file:
-                    if project[-1] != 100:
-                        print(project)
+            display_projects(projects)
+            # Both sorted by priority
         elif choice == "F":
             print("filter projects by date")
         elif choice == "A":
@@ -55,12 +53,32 @@ def get_projects():
     projects = []
     with open(FILENAME, 'r') as in_file:
         for line in in_file:
-            extracted_project = line.strip().split("\t")
-            project = Project(extracted_project[0], extracted_project[1], extracted_project[2], extracted_project[3])
+            data = line.strip().split("\t")
+            project = Project(data[0], data[1], data[2], data[3], data[4])
             projects.append(project)
         for project in projects:
             print(project)
+    # Returns a list of objects
     return projects
+
+
+def display_projects(projects):
+    complete_projects = []
+    incomplete_projects = []
+    for project in projects:
+        # Checking if project is completed
+        if project[-1] == 100:
+            complete_projects.append(project)
+            sorted_complete_projects = sorted(complete_projects)
+        else:
+            incomplete_projects.append(project)
+            sorted_incomplete_projects = sorted(incomplete_projects)
+    print("Incomplete projects:")
+    for project in sorted_incomplete_projects:
+        print(f"{project.name}, start: {project.start_date}, priority {project.priority}, estimate: ${project.cost_estimate}, completion: {project.completion_percentage}%")
+    print("Complete projects:")
+    for project in sorted_complete_projects:
+        print(f"{project.name}, start: {project.start_date}, priority {project.priority}, estimate: ${project.cost_estimate}, completion: {project.completion_percentage}%")
 
 
 if __name__ == "__main__":
