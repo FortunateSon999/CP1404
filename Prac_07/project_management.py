@@ -116,14 +116,23 @@ def update_project(projects):
     projects[project_choice].completion_percentage = str(new_percentage)
 
 
-
 def get_new_project():
     """Gets the data for a new project and returns it."""
-    name = input("Name: ")
-    start_date = input("Start date (dd/mm/yy): ")
-    priority = input("Priority: ")
-    cost = input("Cost estimate: $")
-    percentage_complete = input("Percent complete: ")
+    try:
+        name = input("Name: ")
+        start_date = input("Start date (dd/mm/yy): ")
+        priority = int(input("Priority: "))
+        cost = float(input("Cost estimate: $"))
+        percentage_complete = int(input("Percent complete: "))
+
+        if priority < 0 or cost < 0 or percentage_complete < 0 or percentage_complete > 100:
+            print("Invalid input values. Priority, cost, and percentage must be positive values, "
+                  "and percentage must be between 0 and 100.")
+            return None
+    except ValueError:
+        print("Invalid input. Priority, cost, and percentage must be numbers.")
+        return None
+
     new_project = Project(name, start_date, priority, cost, percentage_complete)
     return new_project
 
