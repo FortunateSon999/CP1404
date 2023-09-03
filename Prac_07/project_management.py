@@ -3,7 +3,11 @@ CP1404/CP5632 Practical 07
 project_management.py
 Theodore Lee
 That day is/was Sunday
-03/09/2023 - 1530hrs
+03/09/2023
+Start: 1530hrs
+Finish: 2035hrs
+Estimated time: 2 hours
+Actual time: 5 hours
 """
 
 import datetime
@@ -93,12 +97,24 @@ def update_project(projects):
     for project in projects:
         print(count, project)
         count += 1
-    project_choice = int(input("Project choice: "))
-    print(projects[project_choice])
-    new_percentage = int(input("New percentage: "))
-    new_priority = int(input("New priority: "))
+
+    try:
+        project_choice = int(input("Project choice: "))
+        if project_choice < 0 or project_choice >= len(projects):
+            print("Invalid project choice.")
+            return
+        new_percentage = int(input("New percentage: "))
+        new_priority = int(input("New priority: "))
+        if new_percentage < 0 or new_percentage > 100 or new_priority < 0:
+            print("Invalid percentage or priority values.")
+            return
+    except ValueError:
+        print("Invalid input. Please enter numbers for project choice, percentage, and priority.")
+        return
+
     projects[project_choice].priority = str(new_priority)
     projects[project_choice].completion_percentage = str(new_percentage)
+
 
 
 def get_new_project():
