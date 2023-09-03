@@ -25,13 +25,16 @@ MENU = ("- (L)oad projects\n"
 
 def main():
     print(MENU)
-    projects = get_projects()
+    projects = get_projects(FILENAME)
     choice = input(">>> ").upper().strip()
     while choice != "Q":
         if choice == "L":
-            print("load projects")
+            new_filename = input("Filename: ")
+            projects = get_projects(new_filename)
         elif choice == "S":
             print("save projects")
+            filename = input("Filename: ")
+            save_projects(filename, projects)
         elif choice == "D":
             print("display projects")
             display_projects(projects)
@@ -51,10 +54,10 @@ def main():
         choice = input(">>> ").upper().strip()
 
 
-def get_projects():
+def get_projects(filename):
     """Loads projects from file, and stores them in a list."""
     projects = []
-    with open(FILENAME, 'r') as in_file:
+    with open(filename, 'r') as in_file:
         in_file.readline()
 
         for line in in_file:
@@ -136,6 +139,12 @@ def filter_by_date(projects):
     else:
         print("No projects found starting after", date_filter.strftime("%d/%m/%Y"))
 
+
+def save_projects(filename, projects):
+    """Saves projects to file."""
+    with open(filename, 'w') as out_file:
+        for project in projects:
+            print(f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion_percentage}", file=out_file)
 
 
 if __name__ == "__main__":
