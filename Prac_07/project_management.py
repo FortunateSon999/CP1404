@@ -6,7 +6,7 @@ That day is/was Sunday
 03/09/2023 - 1530hrs
 """
 
-#import datetime
+import datetime
 from project import Project
 
 # date_string = input("Date (d/m/yyyy): ")  # e.g., "30/9/2022"
@@ -37,6 +37,7 @@ def main():
             display_projects(projects)
         elif choice == "F":
             print("filter projects by date")
+            filter_by_date(projects)
         elif choice == "A":
             print("Let's add new project")
             new_project = get_new_project()
@@ -106,6 +107,35 @@ def get_new_project():
     percentage_complete = input("Percent complete: ")
     new_project = Project(name, start_date, priority, cost, percentage_complete)
     return new_project
+
+
+def filter_by_date(projects):
+    """Filters projects by date."""
+    filtered_date = []
+    date_filter = input("Show projects that start after the date (dd/mm/yyyy): ")
+
+    # Convert the input date string to a datetime object for comparison
+    try:
+        date_filter = datetime.datetime.strptime(date_filter, "%d/%m/%Y")
+    except ValueError:
+        print("Invalid date format. Please use dd/mm/yyyy.")
+        return
+
+    for project in projects:
+        # Change the project's date into datetime object
+        project_start_date = datetime.datetime.strptime(project.start_date, "%d/%m/%Y")
+
+        # Compare the dates
+        if project_start_date >= date_filter:
+            filtered_date.append(project)
+
+    if filtered_date:
+        print("Projects starting after", date_filter.strftime("%d/%m/%Y"))
+        for project in filtered_date:
+            print(f"\t{project}")
+    else:
+        print("No projects found starting after", date_filter.strftime("%d/%m/%Y"))
+
 
 
 if __name__ == "__main__":
