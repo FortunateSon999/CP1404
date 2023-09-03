@@ -35,13 +35,13 @@ def main():
         elif choice == "D":
             print("display projects")
             display_projects(projects)
-            # Both sorted by priority
         elif choice == "F":
             print("filter projects by date")
         elif choice == "A":
             print("add new project")
         elif choice == "U":
             print("update project")
+            update_project(projects)
         else:
             print("Invalid menu choice")
         print(MENU)
@@ -78,10 +78,25 @@ def display_projects(projects):
         sorted_incomplete_projects = sorted(incomplete_projects)
     print("Incomplete projects:")
     for project in sorted_incomplete_projects:
-        print(f"\t{project.name}, start: {project.start_date}, priority {project.priority}, estimate: ${float(project.cost_estimate):.2f}, completion: {project.completion_percentage}%")
+        print(f"\t{project}")
     print("Completed projects:")
     for project in sorted_complete_projects:
-        print(f"\t{project.name}, start: {project.start_date}, priority {project.priority}, estimate: ${project.cost_estimate}, completion: {project.completion_percentage}%")
+        print(f"\t{project}")
+
+
+def update_project(projects):
+    count = 0
+    for project in projects:
+        print(count, project)
+        count += 1
+    project_choice = int(input("Project choice: "))
+    print(projects[project_choice])
+    new_percentage = int(input("New percentage: "))
+    new_priority = int(input("New priority: "))
+    projects[project_choice].priority = str(new_priority)
+    projects[project_choice].completion_percentage = str(new_percentage)
+
+
 
 
 if __name__ == "__main__":
