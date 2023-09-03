@@ -28,6 +28,10 @@ def main():
     for guitar in guitar_objects:
         print(guitar)
 
+    sorted_guitars = sorted(guitar_objects)
+    for guitar in sorted_guitars:
+        print("Sorted guitars list:\n", guitar)
+
 
 if __name__ == "__main__":
     main()
