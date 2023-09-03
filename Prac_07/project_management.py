@@ -2,7 +2,16 @@
 CP1404/CP5632 Practical 07
 project_management.py
 Theodore Lee
+That day is/was Sunday
+03/09/2023 - 1530hrs
 """
+
+import datetime
+
+# date_string = input("Date (d/m/yyyy): ")  # e.g., "30/9/2022"
+# date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+# print(f"That day is/was {date.strftime('%A')}")
+# print(date.strftime("%d/%m/%Y"))
 
 MENU = ("- (L)oad projects\n"
         "- (S)ave projects\n"
@@ -11,6 +20,7 @@ MENU = ("- (L)oad projects\n"
         "- (A)dd new project\n"
         "- (U)pdate project\n"
         "- (Q)uit\n")
+
 
 def main():
     print(MENU)
