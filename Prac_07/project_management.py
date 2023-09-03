@@ -25,13 +25,7 @@ MENU = ("- (L)oad projects\n"
 
 def main():
     print(MENU)
-    projects = []
-    with open(FILENAME, 'r') as in_file:
-        for project in in_file:
-            extracted_project = Project(project.strip().split("	"))
-            projects.append(extracted_project)
-        for project in projects:
-            print(project)
+    projects = get_projects()
     choice = input(">>> ").upper().strip()
     while choice != "Q":
         if choice == "L":
@@ -54,6 +48,19 @@ def main():
             print("Invalid menu choice")
         print(MENU)
         choice = input(">>> ").upper().strip()
+
+
+def get_projects():
+    """Loads projects from file, and stores them in a list."""
+    projects = []
+    with open(FILENAME, 'r') as in_file:
+        for line in in_file:
+            extracted_project = line.strip().split("\t")
+            project = Project(extracted_project[0], extracted_project[1], extracted_project[2], extracted_project[3])
+            projects.append(project)
+        for project in projects:
+            print(project)
+    return projects
 
 
 if __name__ == "__main__":
