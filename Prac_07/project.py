@@ -4,7 +4,8 @@ project.py
 Theodore Lee
 """
 
-class project:
+
+class Project:
     """Initialises a project instance."""
     def __init__(self, name="", start_date="", priority=0, cost_estimate=0, completion_percentage=0):
         self.name = name
