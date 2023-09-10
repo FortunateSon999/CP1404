@@ -12,26 +12,38 @@ from kivy.core.window import Window
 
 class ConvertMilesToKmApp(App):
     def build(self):
-        Window.size(200, 200)
+        Window.size = (200, 200)
         self.title = "Convert Miles to Kilometres"
         self.root = Builder.load_file('convert_miles_km.kv')
         return self.root
 
-    def handle_conversion(self, miles):
+    def handle_conversion(self):
         """Handle conversion of Miles to Kilometres, output result to label widget."""
         try:
-            kilometres = float(miles) * 1.60934
+            miles = float(self.root.ids.miles.text)
+            kilometres = miles * 1.60934
             self.root.ids.output_label.text = str(kilometres)
         except ValueError:
             pass
 
-    def increment(self, miles):
+    def increment(self):
         """Increase miles by 1."""
-        miles += 1
+        try:
+            miles = float(self.root.ids.miles.text)
+            miles += 1
+            self.root.ids.miles.text = str(miles)
+        except ValueError:
+            pass
 
-    def reduction(self, miles):
+    def reduction(self):
         """Reduce miles by 1."""
-        miles -= 1
+        try:
+            miles = float(self.root.ids.miles.text)
+            miles -= 1
+            self.root.ids.miles.text = str(miles)
+        except ValueError:
+            pass
 
 
 ConvertMilesToKmApp().run()
+
