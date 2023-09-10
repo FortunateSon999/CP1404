@@ -38,6 +38,7 @@ class ConvertMilesToKmApp(App):
         except ValueError:
             miles = 1
         self.root.ids.miles.text = str(miles)
+        self.handle_conversion(miles)
 
 
     def reduction(self, miles):
@@ -48,6 +49,7 @@ class ConvertMilesToKmApp(App):
         except ValueError:
             miles = -1
         self.root.ids.miles.text = str(miles)
+        self.handle_conversion(miles)
 
 
 ConvertMilesToKmApp().run()
