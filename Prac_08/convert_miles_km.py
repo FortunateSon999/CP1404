@@ -17,7 +17,7 @@ class ConvertMilesToKmApp(App):
         self.root = Builder.load_file('convert_miles_km.kv')
         return self.root
 
-    def handle_conversion(self):
+    def handle_conversion(self, miles):
         """Handle conversion of Miles to Kilometres, output result to label widget."""
         try:
             miles = float(self.root.ids.miles.text)
@@ -26,7 +26,7 @@ class ConvertMilesToKmApp(App):
         except ValueError:
             pass
 
-    def increment(self):
+    def increment(self, miles):
         """Increase miles by 1."""
         try:
             miles = float(self.root.ids.miles.text)
@@ -35,7 +35,7 @@ class ConvertMilesToKmApp(App):
         except ValueError:
             pass
 
-    def reduction(self):
+    def reduction(self, miles):
         """Reduce miles by 1."""
         try:
             miles = float(self.root.ids.miles.text)
