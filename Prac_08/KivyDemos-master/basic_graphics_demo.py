@@ -7,7 +7,7 @@ class BasicGraphicsDemo(App):
     def build(self):
         self.root = Widget()
 
-        # white rectangle 100x100
+        # White rectangle 100x100
         self.root.canvas.add(Color(1, 1, 1, 1))
         self.root.canvas.add(Rectangle(size=(100, 100)))
 
