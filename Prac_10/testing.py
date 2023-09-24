@@ -48,14 +48,14 @@ def run_tests():
 
 run_tests()
 
-# TODO: 3. Uncomment the following line and run the doctests
+# Uncomment the following line and run the doctests
 # (PyCharm may see your >>> doctest comments and run doctests anyway.)
 doctest.testmod()
 
-# TODO: 4. Fix the failing is_long_word function
+# Fix the failing is_long_word function
 # (don't change the tests, change the function!)
 
-# TODO: 5. Write and test a function to format a phrase as a sentence,
+# Write and test a function to format a phrase as a sentence,
 # starting with a capital and ending with a single full stop.
 # Important: start with a function header and just use pass as the body
 # then add doctests for 3 tests:
@@ -68,11 +68,18 @@ doctest.testmod()
 
 def make_sentence(phrase):
     """
-    >>> make_sentence('hello') -> 'Hello.'
-    >>> 'It is an ex parrot.' -> 'It is an ex parrot.'
-    >>> 'forward unto dawn.' -> 'Forward unto dawn.'
+    >>> make_sentence("hello")
+    'Hello.'
+    >>> make_sentence("It is an ex parrot.")
+    'It is an ex parrot.'
+    >>> make_sentence("forward unto dawn.")
+    'Forward unto dawn.'
     """
-    pass
+    if phrase[0].islower():
+        phrase = phrase.capitalize()
+    if phrase[-1] != ".":
+        phrase += "."
+    return phrase
 
 
 make_sentence("hello")
